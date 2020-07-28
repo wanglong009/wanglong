@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<style>
+    /* 九宫格 学习
+       1 在css 盒子里面 width: 默认100%;  height: 默认 auto / null;  没有 
+        添加 height:0-100%;  属性时 要看 父元素 有没有height 值。没有值 最终都是 0* 0-100% = 0
+
+       2 html,body 默认height:  0  添加  html,body{height:100%;}
+       <body> 
+            <div class="wrap"></div>   .wrap {height:100%;} 才有高度
+       </body>
+
+       3 弹性布局          
+       <div class="wrap">               .wrap {display:flex; flex-wrap:wrap; justify-content:space-around;}
+            <div class="box"></div>     .wrap {align-content:center;}  // 换行 水平 垂直居中
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>     .box{width:30%;height:30%;margin-bottom:10px; border-radius:10px;}
+            <div class="box"></div>      // 宽 高 位 父元素 30% == wrap宽度30%  3个box  = 90% 满了 自动 换行
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+       </div> 
+      4 元素居中 与 % 学习
+       <div class="box"><span>技能树</span></div> 
+
+        .box span{
+            display: block;
+            position: absolute;
+            border: 1px solid #000;
+            left: 50%;                    父级box 宽度50%
+            top: 50%;                        父级box 高度50%
+            transform: translateX(-50%) translateY(-50%);  这里的 X轴 Y轴 50% 是指 span 元素本身宽高50%
+                                   // line-height:100%;  % 不是父级容器 宽高的100% 看font-size:16px; 100%==16px 
+        }
+     */
+html,body {
+    width: 100%;
+    height: 100%;
+    background-color:pink;
+
+    font-size: 16px;
+}
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding:0;
+}
+.wrap {
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: center;
+    border: 2px dashed #00E; 
+}
+.wrap .box {
+    width: 30%;
+    height: 30%;
+    border: 4px solid yellow;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    text-align:center;
+    position: relative;
+}
+.wrap .box:hover {
+    border-color: #f00;
+}
+.box span{
+    display: block;
+    position: absolute;
+    border: 1px solid #000;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+</style>
+</head>
+<body>
+    <div class="wrap">
+       <div class="box"><span>技能树</span></div>
+       <div class="box"><span>技能树</span></div>
+       <div class="box"><span>技能树</span></div>
+       <div class="box"><span>技能树</span></div>
+       <div class="box"><span>技能树</span></div>
+       <div class="box"><span>技能树</span></div>
+       <div class="box"><span>技能树</span></div>
+       <div class="box"><span>技能树</span></div>
+       <div class="box"><span>技能树</span></div>
+    </div>
+</body>
+</html>
