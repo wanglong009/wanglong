@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件捕获冒泡</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+    </style>
+    <script>
+        window.onload = function (e) {
+            var box = document.querySelector('#box');
+
+           
+            document.body.addEventListener('click', function () {
+                alert('body 冒泡');
+                e.stopPropagation();
+                
+            }, false);
+
+            document.body.addEventListener('click', function (e) {
+                alert('body 捕获');
+                e.stopPropagation(); //阻止事件 事件继续传递 捕获和冒泡 
+            }, true);
+
+            box.addEventListener('click', function (e) {
+                alert('box 冒泡');
+            }, true);
+            box.addEventListener('click', function (e) {
+                alert('box 冒泡222');
+            }, false);
+
+
+        }
+
+        var temp = 0; // debug 
+        //guess binary_search 
+        function binary_search(list, target) {
+            var low = 0,
+                high = list.length - 1,
+                guess = 0,
+                mid = 0;
+            while (low <= high) {
+                mid = Math.floor((low + high) / 2);
+                guess = list[mid];
+                if (guess == target) {
+                    return mid;
+                } else if (guess > target) {
+                    high = mid - 1;
+                } else {
+                    low = mid + 1;
+                }
+            }
+            return null;
+        }
+
+        var list = [10, 20, 30, 35, 48, 66, 79, 88, 95, 105];
+        var target = 0;
+        var ret = binary_search(list, target);
+        console.log(ret);
+        console.log('temp=',temp);
+        
+    </script>
+</head>
+
+<body>
+
+    <div id="box">
+        <a href="" www.baidu.com"">百度</a>
+        <a href="" www.baidu.com"">百度</a>
+        <a href="" www.baidu.com"">百度</a>
+        <a href="" www.baidu.com"">百度</a>
+        <a href="" www.baidu.com"">百度</a>
+        <a href="" www.baidu.com"">百度</a>
+        <a href="" www.baidu.com"">百度</a>
+        <a href="" www.baidu.com"">百度</a>
+        <a href="" www.baidu.com"">百度</a>
+        <a href="" www.baidu.com"">百度</a>
+    </div>
+</body>
+
+</html>
